@@ -2,6 +2,8 @@
 
 **Hack-Nation × ElevenLabs · 7th Global AI Hackathon · Challenge 01**
 
+**Live demo:** https://ai-apprentice-marta.lovable.app
+
 > A senior architect retires and takes thirty years of judgment with her. **Marta** — a voice apprentice built on ElevenLabs — watches the architect review drawings, asks *why* at the right pause, confirms she understood, then teaches the next junior architect on a case the expert never showed.
 
 Use case: **architectural drawing review** (revisions, approvals, issuing sheets to site). It is real knowledge-driven desk work: a wrong revision sent to site costs money, and the rules for when to stop live only in senior architects' heads.
