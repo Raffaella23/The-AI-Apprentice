@@ -9,7 +9,7 @@ import { useMarta } from "@/hooks/useMarta";
 import { useExpertMic } from "@/hooks/useExpertMic";
 import { applyAction, describeAction } from "@/lib/caseReducer";
 import { NEWHIRE_CASE, newHireInitial } from "@/lib/sheets";
-import { findViolation, hasCustomGuardrails, type Violation } from "@/lib/guardrails";
+import { findViolation, safetyNetViolation, hasCustomGuardrails, type Violation } from "@/lib/guardrails";
 import { patchSession, uid, useAppSession } from "@/lib/store";
 import { DEMO_MAP, FIRST_MESSAGE_TUTOR, FIRST_MESSAGE_TUTOR_EN, MOOD_LABEL, modeTutor, type Mood } from "@/lib/persona";
 import { buildMasteryReport, evaluateLearning, evaluatePrediction, judgeAction, tutorVerifyQuestion } from "@/lib/apprentice.functions";
@@ -177,7 +177,7 @@ export function TutorSession() {
   const finishAction = async (a: UiAction) => {
     if (a.type !== "issue") return commit(a);
     const st = stateRef.current;
-    let v: Violation | null = findViolation(a.sheetId, NEWHIRE_CASE, st, map);
+    let v: Violation | null = safetyNetViolation(a.sheetId, NEWHIRE_CASE, st, map) ?? findViolation(a.sheetId, NEWHIRE_CASE, st, map);
     if (!v && hasCustomGuardrails(map)) {
       try {
         const sheet = NEWHIRE_CASE.find((x) => x.id === a.sheetId)!;
