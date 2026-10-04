@@ -72,7 +72,7 @@ VERIFY: ask the supplied check question and judge the answer against the Work Ma
 Answer direct questions only from the Work Map; otherwise say you haven't learned that yet. Use skip_turn if the colleague talks to themselves while working.`;
 }
 
-export const DEMO_EXPERT = "Arch. Giorgio Bellini";
+export const DEMO_EXPERT = "Arch. Giulia Bellini";
 
 // Mappa dimostrativa: pronta per mostrare il Voice Tutor anche senza una sessione registrata
 export const DEMO_MAP: WorkMap = {
@@ -111,7 +111,7 @@ export const DEMO_MAP: WorkMap = {
       {
         id: "d4",
         action: "Puts a doubtful sheet on hold",
-        decision: "If a sheet is on hold he doesn't issue it, not even as a courtesy to the client",
+         decision: "If a sheet is on hold she doesn't issue it, not even as a courtesy to the client",
         reason_quote: "On hold means I have a doubt. A doubt doesn't go to the client: first you resolve it.",
         guardrails: [{ rule: "Never issue a sheet that is on hold.", reason_quote: "On hold means I have a doubt. A doubt doesn't go to the client." }],
       },
@@ -162,7 +162,7 @@ export const DEMO_MAP: WorkMap = {
       t: 104,
       frameUrl: "/demo/piano_terra2.png",
       action: "Sospende l'approvazione di un foglio dubbio",
-      decision: "Se un foglio è sospeso non lo emette, nemmeno per cortesia al cliente",
+       decision: "Se un foglio è sospeso non lo emette, nemmeno per cortesia al cliente",
       reason_quote: "Sospeso vuol dire che ho un dubbio. Un dubbio non si manda al cliente: prima si scioglie.",
       guardrails: [{ rule: "Mai emettere un foglio sospeso.", check: { kind: "no_issue_if_held" }, t: 104, frameUrl: "/demo/piano_terra2.png", reason_quote: "Sospeso vuol dire che ho un dubbio. Un dubbio non si manda al cliente." }],
       confidence: 0.85,

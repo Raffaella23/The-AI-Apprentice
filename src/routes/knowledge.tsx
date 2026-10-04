@@ -43,8 +43,16 @@ function KnowledgePage() {
     for (const r of data ?? []) if (r.work_map && r.kind === "capture") maps.push({ map: r.work_map, source: new Date(r.created_at).toLocaleDateString("en-GB") });
     if (!maps.length) maps.push({ map: DEMO_MAP, source: "Sample map" });
     return maps.flatMap(({ map, source }) =>
-      map.steps.flatMap((st) =>
-        st.guardrails.map((g) => ({ key: `${source}-${st.id}-${g.rule}`, source, expert: map.expert, step: st.action, ...g })),
+      map.steps.flatMap((st, stepIndex) =>
+        st.guardrails.map((g, guardrailIndex) => ({
+          key: `${source}-${st.id}-${g.rule}`,
+          source,
+          expert: map.expert,
+          step: map.en?.steps[stepIndex]?.action ?? st.action,
+          ...g,
+          rule: map.en?.steps[stepIndex]?.guardrails[guardrailIndex]?.rule ?? g.rule,
+          reason_quote: map.en?.steps[stepIndex]?.guardrails[guardrailIndex]?.reason_quote ?? g.reason_quote,
+        })),
       ),
     );
   }, [s.workMap, data]);
